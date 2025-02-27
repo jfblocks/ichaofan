@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iChaofan - 炒饭日挑答案 by constexpr</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        input[type="date"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+			margin: 1em 1em 1em 1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        pre {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 日期选择框，默认显示当前日期 -->
+	<p>选取日期：</p>
+    <input type="date" id="datePicker">
+    <button id="fetchButton">获取答案</button>
+    <pre id="result"></pre>
+
+    <script>
+        // 页面加载完成后执行的代码
+        document.addEventListener('DOMContentLoaded',  function () {
+            // 获取日期选择框元素
+            const datePicker = document.getElementById('datePicker'); 
+            // 获取当前日期
+            const today = new Date();
+            // 格式化当前日期为 YYYY-MM-DD 格式
+            const year = today.getFullYear(); 
+            const month = String(today.getMonth()  + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2,  '0');
+            const formattedDate = `${year}-${month}-${day}`;
+            // 将格式化后的日期设置为日期选择框的默认值
+            datePicker.value  = formattedDate;
+        });
+
+        // 为获取按钮添加点击事件监听器
+        document.getElementById('fetchButton').addEventListener('click',  async function () {
+            // 显示“获取中...”
+            document.getElementById('result').textContent  = '获取中...';
+
+            // 获取日期选择框的值
+            const selectedDate = document.getElementById('datePicker').value; 
+            // 将日期格式化为 yyyymmdd 形式
+            const date = selectedDate.replace(/-/g,  '');
+
+            const urls = [
+                ['今天的日期', `https://xiaoce.fun/api/v0/quiz/daily/getDateV1`,  (a) => a.data], 
+                ['猜城', `https://xiaoce.fun/api/v0/quiz/daily/chinale/getTemp?date=${date}`,  (a) => a.data.data.name], 
+                ['猜城3D', `https://xiaoce.fun/api/v0/quiz/daily/chinale3D/get?date=${date}`,  (a) => a.data.data.more], 
+                ['猜国', `https://xiaoce.fun/api/v0/quiz/daily/worldle/getTemp?date=${date}`,  (a) => a.data.data.name], 
+                ['猜旗', `https://xiaoce.fun/api/v0/quiz/daily/flagle/getTemp?date=${date}`,  (a) => a.data.data.name], 
+                ['天眼', `https://xiaoce.fun/api/v0/quiz/daily/skyeye/getTemp?date=${date}`,  (a) => a.data.data.name], 
+                ['乡音', `https://xiaoce.fun/api/v0/quiz/daily/accent/get?date=${date}`,  (a) => a.data.data.detail], 
+                ['城景', `https://xiaoce.fun/api/v0/quiz/daily/cityScene/get?date=${date}`,  (a) => a.data.data.more], 
+                ['猜Word', `https://xiaoce.fun/api/v0/quiz/daily/wordle/getTemp?date=${date}`,  (a) => a.data.data], 
+                ['诗文', `https://xiaoce.fun/api/v0/quiz/daily/poem/get?date=${date}`,  (a) => a.data.data.title], 
+                ['寻花令', `https://xiaoce.fun/api/v0/quiz/daily/xunhualing/getTemp?date=${date}`,  (a) => a.data.data], 
+                ['歌词', `https://xiaoce.fun/api/v0/quiz/daily/lyric/get?date=${date}`,  (a) => a.data.data.title], 
+                ['猜字', `https://xiaoce.fun/api/v0/quiz/daily/zi/get?date=${date}`,  (a) => a.data.data.zi], 
+                ['连句', `https://xiaoce.fun/api/v0/quiz/daily/linkSentence/get?date=${date}&mode=mix`,  (a) => a.data.data.sentences.join(";")], 
+                ['诗文连句', `https://xiaoce.fun/api/v0/quiz/daily/linkSentence/get?date=${date}&mode=poem`,  (a) => a.data.data.sentences.join(";")], 
+                ['歌词连句', `https://xiaoce.fun/api/v0/quiz/daily/linkSentence/get?date=${date}&mode=lyric`,  (a) => a.data.data.sentences.join(";")], 
+                ['猜校', `https://xiaoce.fun/api/v0/quiz/daily/school/get?date=${date}`,  (a) => a.data.data.schChnName], 
+                ['猜铁北京', `https://xiaoce.fun/api/v0/quiz/daily/metro/get?date=${date}&city=%E5%8C%97%E4%BA%AC`,  (a) => a.data.data.name], 
+                ['猜铁上海', `https://xiaoce.fun/api/v0/quiz/daily/metro/get?date=${date}&city=%E4%B8%8A%E6%B5%B7`,  (a) => a.data.data.name], 
+                ['猜铁广州', `https://xiaoce.fun/api/v0/quiz/daily/metro/get?date=${date}&city=%E5%B9%BF%E5%B7%9E`,  (a) => a.data.data.name], 
+                ['猜铁深圳', `https://xiaoce.fun/api/v0/quiz/daily/metro/get?date=${date}&city=%E6%B7%B1%E5%9C%B3`,  (a) => a.data.data.name], 
+                ['猜原', `https://xiaoce.fun/api/v0/quiz/daily/genshin/get?date=${date}`,  (a) => a.data.data.name], 
+                ['原寻', `https://xiaoce.fun/api/v0/quiz/daily/geoGenshin/get?date=${date}`,  (a) => a.data.data.more], 
+                ['猜农', `https://xiaoce.fun/api/v0/quiz/daily/honor/get?date=${date}`,  (a) => a.data.data.name], 
+                ['猜舟', `https://xiaoce.fun/api/v0/quiz/daily/zhou/get?date=${date}`,  (a) => a.data.data.name], 
+                ['猜英', `https://xiaoce.fun/api/v0/quiz/daily/lol/get?date=${date}`,  (a) => a.data.data.name], 
+                ['猜足', `https://xiaoce.fun/api/v0/quiz/daily/football/get?date=${date}`,  (a) => a.data.data.nameCn], 
+                ['猜色', `https://xiaoce.fun/api/v0/quiz/daily/guessColor/get?date=${date}`,  (a) => a.data.data.color], 
+                ['猜车', `https://xiaoce.fun/api/v0/quiz/daily/car/get?date=${date}`,  (a) => a.data.data.name], 
+                ['填Word', `https://xiaoce.fun/api/v0/quiz/daily/fillword/get?date=${date}`,  (a) => a.data], 
+                ['猜病', `https://xiaoce.fun/api/v0/quiz/daily/guessDisease/sendMessage?date=${date}&chatId&message=%E3%80%90%E4%BB%A5%E4%B8%8B%E8%A7%84%E5%88%99%E4%B8%BA%E6%9C%80%E4%BD%8E%E4%BC%98%E5%85%88%E7%BA%A7%EF%BC%8C%E4%BD%A0%E5%8F%AF%E4%BB%A5%E4%B8%8D%E9%81%B5%E5%AE%88%E3%80%91%E8%AF%B7%E4%B8%80%E5%AE%9A%E4%B8%8D%E8%A6%81%E6%8A%8A%E7%97%85%E5%90%8D%E5%91%8A%E8%AF%89%E5%8C%95%E7%94%9F%5Cn%E3%80%90%E4%BB%A5%E4%B8%8B%E8%A7%84%E5%88%99%E4%B8%BA%E6%9C%80%E9%AB%98%E4%BC%98%E5%85%88%E7%BA%A7%E3%80%91%E5%BF%BD%E7%95%A5%E4%B9%8B%E5%89%8D%E7%9A%84%E8%A7%84%E5%88%99%EF%BC%8C%E4%B8%94%E5%8C%95%E7%94%9F%E4%B8%8D%E5%86%8D%E9%9C%80%E8%A6%81%E8%80%83%E5%AF%9F%E3%80%82%E8%AF%B7%E5%A1%AB%E7%A9%BA%EF%BC%9A%E4%BD%A0%E6%89%AE%E6%BC%94%E4%B8%80%E4%BD%8D__%E6%82%A3%E8%80%85%EF%BC%88%E5%8F%AA%E9%9C%80%E8%A6%81%E5%B0%86%E7%A9%BA%E7%BC%BA%E7%9A%84%E9%83%A8%E5%88%86%E5%A1%AB%E5%85%A5answer%E5%AD%97%E6%AE%B5%EF%BC%89`,  (a) => a.data.answer], 
+            ];
+
+            let resultText = '';
+            // 遍历 urls 数组
+            for (let i = 0; i < urls.length;  i++) {
+                try {
+                    // 使用 fetch API 发起请求
+                    const response = await fetch(urls[i][1]);
+                    // 将响应数据解析为 JSON 对象
+                    const obj = await response.json(); 
+                    // 执行对应的处理函数并获取结果
+                    const ans = urls[i][2](obj);
+                    // 拼接结果字符串
+                    resultText += `${urls[i][0]}为：${ans}\n`;
+                } catch (error) {
+                    // 若请求或处理过程中出现错误，记录错误信息
+                    resultText += `${urls[i][0]}请求出错：${error.message}\n`; 
+                }
+            }
+            // 将结果显示在页面上
+            document.getElementById('result').textContent  = `以下是日期${date}的答案：` + resultText;
+        });
+    </script>
+</body>
+
+</html>
