@@ -86,7 +86,7 @@
             const date = selectedDate.replace(/-/g,  '');
 
             const urls = [
-                ['今天的日期', `https://xiaoce.fun/api/v0/quiz/daily/getDateV1`,  (a) => a.data], 
+                //['今天的日期', `https://xiaoce.fun/api/v0/quiz/daily/getDateV1`,  (a) => a.data], 
                 ['猜城', `https://xiaoce.fun/api/v0/quiz/daily/chinale/getTemp?date=${date}`,  (a) => a.data.data.name], 
                 ['猜城3D', `https://xiaoce.fun/api/v0/quiz/daily/chinale3D/get?date=${date}`,  (a) => a.data.data.more], 
                 ['猜国', `https://xiaoce.fun/api/v0/quiz/daily/worldle/getTemp?date=${date}`,  (a) => a.data.data.name], 
@@ -138,15 +138,18 @@
                     const obj = await response.json(); 
                     // 执行对应的处理函数并获取结果
                     const ans = urls[i][2](obj);
+					if(!ans){throw {};}
                     // 拼接结果字符串
                     resultText += `${urls[i][0]}为：${ans}\n`;
                 } catch (error) {
                     // 若请求或处理过程中出现错误，记录错误信息
-                    resultText += `${urls[i][0]}请求出错：${error.message}\n`; 
+                    //resultText += `${urls[i][0]}请求出错：${error.message}\n`; 
+					resultText+="{暂无}"
                 }
             }
             // 将结果显示在页面上
-            document.getElementById('result').textContent  = `以下是日期${date}的答案：` + resultText;
+            document.getElementById('result').textContent  = `猜盐/炒饭小测验全部答案(日期${date})：` + resultText+`\n讨论每日挑战可加群1038027356
+#猜盐 #猜盐每日挑战  #炒饭小测验今日猜词 #炒饭小测验猜字 #炒饭小测验猜歌 `;
         });
     </script>
 </body>
