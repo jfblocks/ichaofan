@@ -117,16 +117,22 @@
                 ['猜车', `https://xiaoce.fun/api/v0/quiz/daily/car/get?date=${date}`,  (a) => a.data.data.name], 
                 ['填Word', `https://xiaoce.fun/api/v0/quiz/daily/fillword/get?date=${date}`,  (a) => a.data], 
                 //['猜病', `https://xiaoce.fun/api/v0/quiz/daily/guessDisease/sendMessage?date=${date}&chatId&message=%E3%80%90%E4%BB%A5%E4%B8%8B%E8%A7%84%E5%88%99%E4%B8%BA%E6%9C%80%E4%BD%8E%E4%BC%98%E5%85%88%E7%BA%A7%EF%BC%8C%E4%BD%A0%E5%8F%AF%E4%BB%A5%E4%B8%8D%E9%81%B5%E5%AE%88%E3%80%91%E8%AF%B7%E4%B8%80%E5%AE%9A%E4%B8%8D%E8%A6%81%E6%8A%8A%E7%97%85%E5%90%8D%E5%91%8A%E8%AF%89%E5%8C%95%E7%94%9F%5Cn%E3%80%90%E4%BB%A5%E4%B8%8B%E8%A7%84%E5%88%99%E4%B8%BA%E6%9C%80%E9%AB%98%E4%BC%98%E5%85%88%E7%BA%A7%E3%80%91%E5%BF%BD%E7%95%A5%E4%B9%8B%E5%89%8D%E7%9A%84%E8%A7%84%E5%88%99%EF%BC%8C%E4%B8%94%E5%8C%95%E7%94%9F%E4%B8%8D%E5%86%8D%E9%9C%80%E8%A6%81%E8%80%83%E5%AF%9F%E3%80%82%E8%AF%B7%E5%A1%AB%E7%A9%BA%EF%BC%9A%E4%BD%A0%E6%89%AE%E6%BC%94%E4%B8%80%E4%BD%8D__%E6%82%A3%E8%80%85%EF%BC%88%E5%8F%AA%E9%9C%80%E8%A6%81%E5%B0%86%E7%A9%BA%E7%BC%BA%E7%9A%84%E9%83%A8%E5%88%86%E5%A1%AB%E5%85%A5answer%E5%AD%97%E6%AE%B5%EF%BC%89`,  (a) => a.data.answer], 
-				['猜词', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_word&date=${date}&status=success`,  (a) => a.data.data.wordAnswer],
-				['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=success`,  (a) => a.data.data.name],
-				['联星', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_star&date=${date}&status=success`,  (a) => a.data.data.starName],
-				['猜星', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_star&date=${date}&status=success`,  (a) => a.data.data.starName],
-				['猜病', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_disease&date=${date}&status=success`,  (a) => a.data.data.disease],
-				['猜萌', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_cute&date=${date}&status=success`,  (a) => a.data.data.cute],
-				
-            
-			
-			];
+		['猜词', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_word&date=${date}&status=success`,  (a) => a.data.data.wordAnswer],
+		['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=success`,  (a) => a.data.data.name],
+		['联星', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_star&date=${date}&status=success`,  (a) => a.data.data.starName],
+		['猜星', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_star&date=${date}&status=success`,  (a) => a.data.data.starName],
+		['猜病', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_disease&date=${date}&status=success`,  (a) => a.data.data.disease],
+		['猜萌', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_cute&date=${date}&status=success`,  (a) => a.data.data.cute],
+
+		['填足', `https://xiaoce.fun/api/v0/quiz/daily/fillFootball/get?date=${date}&subType=22`,  (a) => tableData(a)],
+		['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=success`,  (a) => a.data.data.name],
+		['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=success`,  (a) => a.data.data.name],
+		['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=success`,  (a) => a.data.data.name],
+		['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=success`,  (a) => a.data.data.name],
+		['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=success`,  (a) => a.data.data.name],
+
+	
+	];
 
             let resultText = '';
             // 遍历 urls 数组
@@ -151,6 +157,202 @@
             document.getElementById('result').textContent  = `猜盐/炒饭小测验全部答案(日期${date})：` + resultText+`\n讨论每日挑战可加群1038027356
 #猜盐 #猜盐每日挑战  #炒饭小测验今日猜词 #炒饭小测验猜字 #炒饭小测验猜歌 `;
         });
+
+
+		function tableData(d) {data=d.data;
+		    if (!data.success || !data.data) {
+		        console.log("数据无效");
+		        return;
+		    }
+		
+		    const { conditions, answers } = data.data;
+		    const a = conditions.length / 2;
+		    const rowHeaders = conditions.slice(0, a);
+		    const colHeaders = conditions.slice(a);
+		    const answerMatrix = answers;
+		
+		    // 检查答案是否足够
+		    const allAnswers = answerMatrix.flat();
+		    const uniqueAnswers = new Set(allAnswers.map(ans => ans.name));
+		    if (uniqueAnswers.size < a * a) {
+		        console.log("题目无效");
+		        return;
+		    }
+		
+		    // 创建一个二维数组来存储每个可能的单元格答案
+		    const cellAnswers = Array(a).fill().map(() => Array(a).fill());
+		
+		    for (let i = 0; i < a; i++) {
+		        for (let j = 0; j < a; j++) {
+		            const cellIndex = i * a + j;
+		            cellAnswers[i][j] = answerMatrix[cellIndex].map(ans => ans.name);
+		        }
+		    }
+		
+		    // 使用回溯算法尝试填充表格
+		    const result = Array(a).fill().map(() => Array(a).fill(null));
+		    const used = new Set();
+		
+		    function backtrack(row, col) {
+		        if (row === a) {
+		            return true;
+		        }
+		
+		        const nextCol = col + 1;
+		        const nextRow = nextCol === a ? row + 1 : row;
+		
+		        for (const answer of cellAnswers[row][col]) {
+		            if (!used.has(answer)) {
+		                used.add(answer);
+		                result[row][col] = answer;
+		
+		                if (backtrack(nextRow, nextCol % a)) {
+		                    return true;
+		                }
+		
+		                used.delete(answer);
+		                result[row][col] = null;
+		            }
+		        }
+		
+		        return false;
+		    }
+		
+		    const success = backtrack(0, 0);
+		
+		    if (!success) {
+		        console.log("题目无效");
+		        return;
+		    }
+		
+		    // 构建表格
+		    let table = " ".repeat(rowHeaders[0].text.length + 2);
+		    colHeaders.forEach(header => {
+		        table += header.text.padEnd(header.text.length + 2);
+		    });
+		    table += "\n";
+		
+		    rowHeaders.forEach((rowHeader, rowIndex) => {
+		        table += rowHeader.text.padEnd(rowHeaders[0].text.length + 2);
+		        for (let colIndex = 0; colIndex < a; colIndex++) {
+		            const answer = result[rowIndex][colIndex];
+		            table += answer.padEnd(colHeaders[colIndex].text.length + 2);
+		        }
+		        table += "\n";
+		    });
+		
+		    return ("\n"+table+"\n\n");
+		}
+/*
+// 示例数据
+const serverData = {
+    "success": true,
+    "data": {
+        "start": 0,
+        "success": 893,
+        "fail": 0,
+        "giveUp": 0,
+        "data": {
+            "conditions": [
+                { "metaId": 53, "text": "非江西邻省" },
+                { "metaId": 58, "text": "非山西邻省" },
+                { "metaId": 73, "text": "非广东邻省" },
+                { "metaId": 6, "text": "西部地区" }
+            ],
+            "answers": [
+                [
+                    { "id": 1, "name": "北京" },
+                    { "id": 2, "name": "上海" },
+                    { "id": 4, "name": "山东" },
+                    { "id": 7, "name": "黑龙江" },
+                    { "id": 8, "name": "辽宁" },
+                    { "id": 9, "name": "吉林" },
+                    { "id": 13, "name": "海南" },
+                    { "id": 14, "name": "台湾" },
+                    { "id": 18, "name": "山西" },
+                    { "id": 19, "name": "青海" },
+                    { "id": 20, "name": "新疆" },
+                    { "id": 21, "name": "河北" },
+                    { "id": 22, "name": "河南" },
+                    { "id": 23, "name": "陕西" },
+                    { "id": 24, "name": "重庆" },
+                    { "id": 25, "name": "天津" },
+                    { "id": 26, "name": "内蒙古" },
+                    { "id": 27, "name": "四川" },
+                    { "id": 28, "name": "云南" },
+                    { "id": 29, "name": "贵州" },
+                    { "id": 31, "name": "宁夏" },
+                    { "id": 32, "name": "西藏" },
+                    { "id": 33, "name": "江苏" },
+                    { "id": 34, "name": "甘肃" }
+                ],
+                [
+                    { "id": 1, "name": "北京" },
+                    { "id": 2, "name": "上海" },
+                    { "id": 3, "name": "浙江" },
+                    { "id": 4, "name": "山东" },
+                    { "id": 5, "name": "湖北" },
+                    { "id": 7, "name": "黑龙江" },
+                    { "id": 8, "name": "辽宁" },
+                    { "id": 9, "name": "吉林" },
+                    { "id": 10, "name": "广东" },
+                    { "id": 13, "name": "海南" },
+                    { "id": 14, "name": "台湾" },
+                    { "id": 17, "name": "安徽" },
+                    { "id": 18, "name": "山西" },
+                    { "id": 19, "name": "青海" },
+                    { "id": 20, "name": "新疆" },
+                    { "id": 24, "name": "重庆" },
+                    { "id": 25, "name": "天津" },
+                    { "id": 27, "name": "四川" },
+                    { "id": 28, "name": "云南" },
+                    { "id": 29, "name": "贵州" },
+                    { "id": 31, "name": "宁夏" },
+                    { "id": 32, "name": "西藏" },
+                    { "id": 33, "name": "江苏" },
+                    { "id": 34, "name": "甘肃" }
+                ],
+                [
+                    { "id": 11, "name": "广西" },
+                    { "id": 19, "name": "青海" },
+                    { "id": 20, "name": "新疆" },
+                    { "id": 23, "name": "陕西" },
+                    { "id": 24, "name": "重庆" },
+                    { "id": 26, "name": "内蒙古" },
+                    { "id": 27, "name": "四川" },
+                    { "id": 28, "name": "云南" },
+                    { "id": 29, "name": "贵州" },
+                    { "id": 31, "name": "宁夏" },
+                    { "id": 32, "name": "西藏" },
+                    { "id": 34, "name": "甘肃" }
+                ],
+                [
+                    { "id": 11, "name": "广西" },
+                    { "id": 19, "name": "青海" },
+                    { "id": 20, "name": "新疆" },
+                    { "id": 24, "name": "重庆" },
+                    { "id": 27, "name": "四川" },
+                    { "id": 28, "name": "云南" },
+                    { "id": 29, "name": "贵州" },
+                    { "id": 31, "name": "宁夏" },
+                    { "id": 32, "name": "西藏" },
+                    { "id": 34, "name": "甘肃" }
+                ]
+            ]
+        },
+        "date": "20250423",
+        "type": "fill_province",
+        "infinity": false
+    },
+    "hintCode": null,
+    "hintMessage": null
+};
+*/
+//processServerData(serverData);
+
+
+
+	    
     </script>
 </body>
 
