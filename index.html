@@ -244,12 +244,12 @@
 		    // 构建表格
 		    let table = " ".repeat(rowHeaders[0].text.length + 4,"\u3000");
 		    colHeaders.forEach(header => {
-		        table += (header+"|").text.padEnd(header.text.length + 2);
+		        table += (header.text+"|").padEnd(header.text.length + 2);
 		    });
 		    table += "\n";
 		
 		    rowHeaders.forEach((rowHeader, rowIndex) => {
-		        table += (rowHeader+"|").text.padEnd(rowHeaders[0].text.length + 4,"\u3000");
+		        table += (rowHeader.text+"|").padEnd(rowHeaders[0].text.length + 4,"\u3000");
 		        for (let colIndex = 0; colIndex < a; colIndex++) {
 		            const answer = result[rowIndex][colIndex];
 		            table += (answer+"|").padEnd(colHeaders[colIndex].text.length + 4,"\u3000");
