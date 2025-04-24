@@ -130,12 +130,12 @@
 		['填足2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillFootball/get?date=${date}&subType=22`,  (a) => tableData(a)],
 		    ['填省2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillProvince/get?date=${date}&subType=22`,  (a) => tableData(a)],
 		    ['填省3x3', `https://xiaoce.fun/api/v0/quiz/daily/fillProvince/get?date=${date}&subType=33`,  (a) => tableData(a)],
-		    ['填国3x3', `https://xiaoce.fun/api/v0/quiz/daily/fillCountry/get?date=${date}&subType=22`,  (a) => tableData(a)],
-		    ['填歌2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillSong/get?date=${date}&subType=22`,  (a) => tableData(a)],
+		    ['填国2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillCountry/get?date=${date}&subType=22`,  (a) => tableData(a)],
+		    ['填歌2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillSong/get?date=${date}&subType=22`,  (a) => tableData(a,"title")],
 		    ['填番3x3', `https://xiaoce.fun/api/v0/quiz/daily/fillAnime/get?date=${date}&subType=33`,  (a) => tableData(a)],
-		    ['填影2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillMovie/get?date=${date}&subType=22`,  (a) => tableData(a)],
+		    ['填影2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillMovie/get?date=${date}&subType=22`,  (a) => tableData(a,"title")],
 		    ['填足', `https://xiaoce.fun/api/v0/quiz/daily/fillFootball/get?date=${date}&subType=22`,  (a) => tableData(a)],
-		    ['填歌3x3', `https://xiaoce.fun/api/v0/quiz/daily/fillSong/get?date=${date}&subType=33`,  (a) => tableData(a)],
+		    ['填歌3x3', `https://xiaoce.fun/api/v0/quiz/daily/fillSong/get?date=${date}&subType=33`,  (a) => tableData(a,"title")],
 		    ['填篮2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillNBA/get?date=${date}&subType=22`,  (a) => tableData(a)],
 		//['填省2x2', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=success`,  (a) => a.data.data.name],
 		['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=success`,  (a) => a.data.data.name],
@@ -161,7 +161,7 @@
                     resultText += `${urls[i][0]}为：${ans}\n`;
                 } catch (error) {
                     // 若请求或处理过程中出现错误，记录错误信息
-                    //resultText += `${urls[i][0]}请求出错：${error.message}\n`; 
+                    console.log( `${urls[i][0]}请求出错：${error.message}\n`); 
 					resultText+=`${urls[i][0]}:{暂无}\n`;
                 }
             }
@@ -171,9 +171,12 @@
         });
 
 
-		function tableData(d) {data=d.data;
+		function tableData(d,ns) {
+			if(!ns){ns="name";}
+			data=d.data;
 		    if (!data.success || !data.data) {
 		        console.log("数据无效");
+				console.log(d);
 		        return;
 		    }
 		
@@ -185,9 +188,10 @@
 		
 		    // 检查答案是否足够
 		    const allAnswers = answerMatrix.flat();
-		    const uniqueAnswers = new Set(allAnswers.map(ans => ans.name));
+		    const uniqueAnswers = new Set(allAnswers.map(ans => ans[d]));
 		    if (uniqueAnswers.size < a * a) {
 		        console.log("题目无效");
+				console.log(d);
 		        return;
 		    }
 		
@@ -197,7 +201,7 @@
 		    for (let i = 0; i < a; i++) {
 		        for (let j = 0; j < a; j++) {
 		            const cellIndex = i * a + j;
-		            cellAnswers[i][j] = answerMatrix[cellIndex].map(ans => ans.name);
+		            cellAnswers[i][j] = answerMatrix[cellIndex].map(ans => ans[d]);
 		        }
 		    }
 		
