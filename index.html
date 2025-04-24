@@ -166,8 +166,9 @@
                 }
             }
             // 将结果显示在页面上
-            document.getElementById('result').textContent  = `猜盐/炒饭小测验全部答案(日期${date})：\n` + resultText+`\n讨论每日挑战可加群1038027356
+            document.getElementById('result').textContent  = `猜盐/炒饭小测验全部答案(日期${date})：[答案不唯一的，提供一个示例]\n` + resultText+`\n讨论每日挑战可加群1038027356
 #猜盐 #猜盐每日挑战  #炒饭小测验今日猜词 #炒饭小测验猜字 #炒饭小测验猜歌 `;
+		copyResult();
         });
 
 
@@ -259,6 +260,26 @@
 		
 		    return ("\n"+table+"\n\n");
 		}
+		    function copyResult() {
+			    const codeElement = document.getElementById('fetchButton');
+			    // 将元素中的内容转换为文本
+			    const codeText = codeElement.innerText;
+			
+			    // 使用 Clipboard API 复制文本
+			    navigator.clipboard.writeText(codeText).then(() => {
+			        // 复制成功后的反馈
+			        const button = document.querySelector('button');
+			        const originalText = button.textContent;
+			        button.textContent = '已复制!';
+			        setTimeout(() => {
+			            button.textContent = originalText;
+			        }, 2000);
+			    }).catch(err => {
+			        // 复制失败的处理
+			        console.error('复制失败:', err);
+			        alert('复制失败，请重试！');
+			    });
+			}
 /*
 // 示例数据
 const serverData = {
