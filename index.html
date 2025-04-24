@@ -188,7 +188,7 @@
 		
 		    // 检查答案是否足够
 		    const allAnswers = answerMatrix.flat();
-		    const uniqueAnswers = new Set(allAnswers.map(ans => ans[d]));
+		    const uniqueAnswers = new Set(allAnswers.map(ans => ans[ns]));
 		    if (uniqueAnswers.size < a * a) {
 		        console.log("题目无效");
 				console.log(d);
@@ -201,7 +201,7 @@
 		    for (let i = 0; i < a; i++) {
 		        for (let j = 0; j < a; j++) {
 		            const cellIndex = i * a + j;
-		            cellAnswers[i][j] = answerMatrix[cellIndex].map(ans => ans[d]);
+		            cellAnswers[i][j] = answerMatrix[cellIndex].map(ans => ans[ns]);
 		        }
 		    }
 		
