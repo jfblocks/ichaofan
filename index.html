@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+lt<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
@@ -261,14 +261,14 @@
 		    return ("\n"+table+"\n\n");
 		}
 		    function copyResult() {
-			    const codeElement = document.getElementById('fetchButton');
+			    const codeElement = document.getElementById('result');
 			    // 将元素中的内容转换为文本
 			    const codeText = codeElement.innerText;
 			
 			    // 使用 Clipboard API 复制文本
 			    navigator.clipboard.writeText(codeText).then(() => {
 			        // 复制成功后的反馈
-			        const button = document.querySelector('button');
+			        const button = document.getElementById('fetchButton');
 			        const originalText = button.textContent;
 			        button.textContent = '已复制!';
 			        setTimeout(() => {
