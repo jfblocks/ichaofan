@@ -92,7 +92,7 @@
                 ['猜国', `https://xiaoce.fun/api/v0/quiz/daily/worldle/getTemp?date=${date}`,  (a) => a.data.data.name], 
                 ['猜旗', `https://xiaoce.fun/api/v0/quiz/daily/flagle/getTemp?date=${date}`,  (a) => a.data.data.name], 
                 ['天眼', `https://xiaoce.fun/api/v0/quiz/daily/skyeye/getTemp?date=${date}`,  (a) => a.data.data.name], 
-                ['乡音', `https://xiaoce.fun/api/v0/quiz/daily/accent/get?date=${date}`,  (a) => a.data.data.detail], 
+                ['乡音', `https://xiaoce.fun/api/v0/quiz/daily/accent/get?date=${date}`,  (a) => a.data.data.detail.split('_')[0]], 
                 ['城景', `https://xiaoce.fun/api/v0/quiz/daily/cityScene/get?date=${date}`,  (a) => a.data.data.more], 
                 ['猜Word', `https://xiaoce.fun/api/v0/quiz/daily/wordle/getTemp?date=${date}`,  (a) => a.data.data], 
                 ['诗文', `https://xiaoce.fun/api/v0/quiz/daily/poem/get?date=${date}`,  (a) => a.data.data.title], 
