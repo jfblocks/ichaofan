@@ -146,7 +146,7 @@
 	
 	];
 	const date0=await fetch(urls[0][1]);
-	const date1=date0.json();
+	const date1=await date0.json();
 	const datestr=urls[0][2](date1);
 	if(!datestr){throw{};}
 	if(date>date0){document.getElementById('result').textContent  = `选定的日期没有答案\n\n`;return;}
