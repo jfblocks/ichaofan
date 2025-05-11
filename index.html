@@ -150,6 +150,7 @@
 	const datestr=urls[0][2](date1);
 	if(!datestr){throw{};}
 	if((+datestr)>(+date)){document.getElementById('result').textContent  = `选定的日期没有答案\n\n`;return;}
+		console.log(datestr);console.log(date);
             let resultText = '';
             // 遍历 urls 数组
             for (let i = 0; i < urls.length;  i++) {
