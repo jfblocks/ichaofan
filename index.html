@@ -149,7 +149,7 @@
 	const date1=await date0.json();
 	const datestr=urls[0][2](date1);
 	if(!datestr){throw{};}
-	if((+date)>(+date0)){document.getElementById('result').textContent  = `选定的日期没有答案\n\n`;return;}
+	if((+datestr)>(+date)){document.getElementById('result').textContent  = `选定的日期没有答案\n\n`;return;}
             let resultText = '';
             // 遍历 urls 数组
             for (let i = 0; i < urls.length;  i++) {
