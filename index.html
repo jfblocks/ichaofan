@@ -86,7 +86,7 @@
             const date = selectedDate.replace(/-/g,  '');
 
             const urls = [
-                //['今天的日期', `https://xiaoce.fun/api/v0/quiz/daily/getDateV1`,  (a) => a.data], 
+                ['今天的日期', `https://xiaoce.fun/api/v0/quiz/daily/getDateV1`,  (a) => a.data], 
                 ['猜城', `https://xiaoce.fun/api/v0/quiz/daily/chinale/getTemp?date=${date}`,  (a) => a.data.data.name], 
                 ['猜城3D', `https://xiaoce.fun/api/v0/quiz/daily/chinale3D/get?date=${date}`,  (a) => a.data.data.more], 
                 ['猜国', `https://xiaoce.fun/api/v0/quiz/daily/worldle/getTemp?date=${date}`,  (a) => a.data.data.name], 
