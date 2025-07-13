@@ -145,7 +145,7 @@
 		    ['填篮2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillNBA/get?date=${date}&subType=22`,  (a) => tableData(a)],
       ['填字2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillZi/get?date=${date}&subType=22`,  (a) => tableData(a,"zi")],
 
-      ['排历', `https://xiaoce.fun/api/v0/quiz/daily/history/get?date=${date}`,  (a) =>{let r="";for(let i of a.data.data.events){r+=`${i.year}${i.title};`}],
+      ['排历', `https://xiaoce.fun/api/v0/quiz/daily/history/get?date=${date}`,  (a) =>{let r="";for(let i of a.data.data.events){r+=`${i.year}${i.title};`} return r;}],
 
 		//['填省2x2', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
 		//['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
