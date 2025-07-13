@@ -119,6 +119,8 @@
                 ['猜五', `https://xiaoce.fun/api/v0/quiz/daily/five/get?date=${date}`,  (a) => a.data.data.name], 
                 ['猜穹', `https://xiaoce.fun/api/v0/quiz/daily/starRail/get?date=${date}`,  (a) => a.data.data.name], 
                 ['猜游', `https://xiaoce.fun/api/v0/quiz/daily/steam/get?date=${date}`,  (a) => a.data.data.cnName], 
+                ['Minecraft猜物', `https://xiaoce.fun/api/v0/quiz/daily/mc/get?date=${date}`,  (a) => a.data.item.displayNameZh], 
+                ['百科', `https://xiaoce.fun/api/v0/quiz/daily/steam/get?date=${date}`,  (a) => a.data.data.title], 
 
 
 		    ['猜宝可梦', `https://xiaoce.fun/api/v0/quiz/daily/pokemon/get?date=${date}`,  (a) => a.data.data.name], 
@@ -146,6 +148,8 @@
       ['填字2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillZi/get?date=${date}&subType=22`,  (a) => tableData(a,"zi")],
 
       ['排历', `https://xiaoce.fun/api/v0/quiz/daily/history/get?date=${date}`,  (a) =>{let r="";for(let i of a.data.data.events){r+=`${i.year}${i.title};`} return r;}],
+      ['错字', `https://xiaoce.fun/api/v0/quiz/daily/wrong/get?date=${date}`,  (a) =>{let r="";for(let i of a.data.data.wrongWords){r+=`${i.wrongWord}->${i.correctWord};`} return r;}],
+
 
 		//['填省2x2', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
 		//['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
