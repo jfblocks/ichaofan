@@ -133,8 +133,9 @@
 		['猜星', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_star&date=${date}&status=giveUp`,  (a) => a.data.data.starName],
 		['猜病', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_disease&date=${date}&status=giveUp`,  (a) => a.data.data.disease],
 		['猜萌', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_cute&date=${date}&status=giveUp`,  (a) => a.data.data.cute],
-		    ['猜罪', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_crime&date=${date}&status=giveUp`,  (a) => a.data.data.crime_name],
+		['猜罪', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_crime&date=${date}&status=giveUp`,  (a) => a.data.data.crime_name],
 
+		['猜职', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_job&date=${date}&status=giveUp`,  (a) => a.data.data.job],
 		['填足2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillFootball/get?date=${date}&subType=22`,  (a) => tableData(a)],
 		    ['填省2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillProvince/get?date=${date}&subType=22`,  (a) => tableData(a)],
 		    ['填省3x3', `https://xiaoce.fun/api/v0/quiz/daily/fillProvince/get?date=${date}&subType=33`,  (a) => tableData(a)],
