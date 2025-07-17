@@ -609,12 +609,12 @@ function buildHtmlTable(rowHeaders, colHeaders, result) {
     let tableHtml = '<table class="min-w-full divide-y divide-gray-200">';
     
     // 表头行
-    tableHtml += '<thead class="bg-gray-50">';
+    tableHtml += '<thead class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">';
     tableHtml += '<tr>';
     tableHtml += `<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>`; // 左上角空单元格
     
     colHeaders.forEach(header => {
-        tableHtml += `<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">${header.text}</th>`;
+        tableHtml += `<th scope="col" class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${header.text}</th>`;
     });
     
     tableHtml += '</tr>';
