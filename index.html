@@ -194,7 +194,7 @@
             margin-top: 30px;
         }
 
-        pre {
+        .showpre {
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             padding: 25px;
             border-radius: 16px;
@@ -214,11 +214,11 @@
             transition: all 0.3s ease;
         }
 
-        pre:empty {
+        .showpre:empty {
             display: none;
         }
 
-        pre:not(:empty) {
+        .showpre:not(:empty) {
             animation: fadeIn 0.5s ease-out;
         }
 
@@ -233,7 +233,7 @@
             }
         }
 
-        pre:hover {
+        .showpre:hover {
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
         }
 
@@ -351,7 +351,7 @@
                 max-width: 300px;
             }
 
-            pre {
+            .showpre {
                 font-size: 0.85rem;
                 padding: 20px;
             }
@@ -368,21 +368,21 @@
         }
 
         /* 滚动条美化 */
-        pre::-webkit-scrollbar {
+        .showpre::-webkit-scrollbar {
             width: 8px;
         }
 
-        pre::-webkit-scrollbar-track {
+        .showpre::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 4px;
         }
 
-        pre::-webkit-scrollbar-thumb {
+        .showpre::-webkit-scrollbar-thumb {
             background: linear-gradient(135deg, #667eea, #764ba2);
             border-radius: 4px;
         }
 
-        pre::-webkit-scrollbar-thumb:hover {
+        .showpre::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(135deg, #5a67d8, #6b46c1);
         }
 
@@ -420,10 +420,10 @@
         </div>
 
         <div class="result-container">
-            <pre id="result" onclick="//copyResult()"></pre>
+            <div class="showpre" id="result" onclick="//copyResult()"></div>
             <div class="copy-hint" id="copyHint" style="display: none;">
                 <i class="fas fa-info-circle"></i>
-                点击结果区域可复制内容到剪贴板
+                <!--点击结果区域可复制内容到剪贴板-->
             </div>
         </div>
     </div>
@@ -497,7 +497,7 @@
                 }
             }
             // 将结果显示在页面上
-            resultElement.textContent = `猜盐答案(日期${date})：<b>[答案不唯一的，提供一个示例]</b><br>\n` + resultText+`<br><br><b>Open source at <a href="https://github.com/jfblocks/ichaofan/">GitHub</a>, by constexpr <a href="mailto:jfblockset91@2925.com"> jfblockset91@2925.com </a></b><br><br>`;
+            resultElement.innerHTML = `猜盐答案(日期${date})：<b>[答案不唯一的，提供一个示例]</b><br>\n` + resultText+`<br><br><b>Open source at <a href="https://github.com/jfblocks/ichaofan/">GitHub</a>, by constexpr <a href="mailto:jfblockset91@2925.com"> jfblockset91@2925.com </a></b><br><br>`;
             
             // 恢复按钮状态
             button.classList.remove('loading');
