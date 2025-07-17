@@ -766,6 +766,59 @@ const serverData = {
 };
 */
 //processServerData(serverData);
+	const historyData=(a) => {
+  let tableHtml = '<table class="min-w-full divide-y divide-gray-200">';
+  
+  // 表头（修改为"年份"和"历史事件"）
+  tableHtml += '<thead class="bg-gray-50">';
+  tableHtml += '<tr>';
+  tableHtml += '<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">年份</th>';
+  tableHtml += '<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">历史事件</th>';
+  tableHtml += '</tr>';
+  tableHtml += '</thead>';
+  
+  // 表格主体
+  tableHtml += '<tbody class="bg-white divide-y divide-gray-200">';
+  
+  for (let i of a.data.data.events) {
+    tableHtml += '<tr class="hover:bg-gray-50 transition-colors">';
+    tableHtml += `<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${i.year}</td>`;
+    tableHtml += `<td class="px-6 py-4 text-sm text-gray-700">${i.title}</td>`;
+    tableHtml += '</tr>';
+  }
+  
+  tableHtml += '</tbody>';
+  tableHtml += '</table>';
+  
+  return tableHtml;
+};
+
+	const wrongData=(a) => {
+  let tableHtml = '<table class="min-w-full divide-y divide-gray-200">';
+  
+  // 表头（修改为"错字"和"更正"）
+  tableHtml += '<thead class="bg-gray-50">';
+  tableHtml += '<tr>';
+  tableHtml += '<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">错字</th>';
+  tableHtml += '<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">更正</th>';
+  tableHtml += '</tr>';
+  tableHtml += '</thead>';
+  
+  // 表格主体
+  tableHtml += '<tbody class="bg-white divide-y divide-gray-200">';
+  
+  for (let i of a.data.data.wrongWords) {
+    tableHtml += '<tr class="hover:bg-gray-50 transition-colors">';
+    tableHtml += `<td class="px-6 py-4 whitespace-nowrap text-sm text-red-500 font-medium">${i.wrongWord}</td>`;
+    tableHtml += `<td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-medium">${i.correctWord}</td>`;
+    tableHtml += '</tr>';
+  }
+  
+  tableHtml += '</tbody>';
+  tableHtml += '</table>';
+  
+  return tableHtml;
+};
     const urlgen=(date)=>[
                 ['今天的日期', `https://xiaoce.fun/api/v0/quiz/daily/getDateV1`,  (a) => a.data], 
                 ['猜城', `https://xiaoce.fun/api/v0/quiz/daily/chinale/getTemp?date=${date}`,  (a) => a.data.data.name], 
@@ -829,8 +882,8 @@ const serverData = {
 		    ['填篮2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillNBA/get?date=${date}&subType=22`,  (a) => tableData(a)],
       ['填字2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillZi/get?date=${date}&subType=22`,  (a) => tableData(a,"zi")],
 
-      ['排历', `https://xiaoce.fun/api/v0/quiz/daily/history/get?date=${date}`,  (a) =>{let r="";for(let i of a.data.data.events){r+=`${i.year}${i.title};`} return r;}],
-      ['错字', `https://xiaoce.fun/api/v0/quiz/daily/wrong/get?date=${date}`,  (a) =>{let r="";for(let i of a.data.data.wrongWords){r+=`${i.wrongWord}->${i.correctWord};`} return r;}],
+      ['排历', `https://xiaoce.fun/api/v0/quiz/daily/history/get?date=${date}`,  historyData],
+      ['错字', `https://xiaoce.fun/api/v0/quiz/daily/wrong/get?date=${date}`,  wrongData],
 
 
 		//['填省2x2', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
