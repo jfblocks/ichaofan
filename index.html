@@ -7,6 +7,29 @@
     <title>iChaofan - 猜盐日挑答案 by constexpr</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+	  <!-- 可选：自定义 Tailwind 配置 -->
+	  <script>
+	    tailwind.config = {
+	      theme: {
+	        extend: {
+	          colors: {
+	            primary: 'violet', // 自定义主色调
+	          },
+	        },
+	      }
+	    }
+	  </script>
+	  <!-- 自定义工具类 -->
+	  <style type="text/tailwindcss">
+	    @layer utilities {
+	      .content-auto {
+	        content-visibility: auto;
+	      }
+	    }
+	  </style>
     <style>
         * {
             margin: 0;
@@ -439,7 +462,7 @@
             const selectedDate = document.getElementById('datePicker').value; 
             // 将日期格式化为 yyyymmdd 形式
             const date = selectedDate.replace(/-/g,  '');
-
+	const urls = urlgen(date);
 	const date0=await fetch(urls[0][1]);
 	const date1=await date0.json();
 	const datestr=urls[0][2](date1);
@@ -454,7 +477,7 @@
 		console.log(datestr);console.log(date);
             let resultText = '';
 		
-            const urls = urlgen(date);
+            
             // 遍历 urls 数组
             for (let i = 0; i < urls.length;  i++) {
                 try {
