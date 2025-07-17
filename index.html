@@ -440,87 +440,12 @@
             // 将日期格式化为 yyyymmdd 形式
             const date = selectedDate.replace(/-/g,  '');
 
-            const urls = [
-                ['今天的日期', `https://xiaoce.fun/api/v0/quiz/daily/getDateV1`,  (a) => a.data], 
-                ['猜城', `https://xiaoce.fun/api/v0/quiz/daily/chinale/getTemp?date=${date}`,  (a) => a.data.data.name], 
-                ['猜城3D', `https://xiaoce.fun/api/v0/quiz/daily/chinale3D/get?date=${date}`,  (a) => a.data.data.more], 
-                ['猜国', `https://xiaoce.fun/api/v0/quiz/daily/worldle/getTemp?date=${date}`,  (a) => a.data.data.name], 
-                ['猜旗', `https://xiaoce.fun/api/v0/quiz/daily/flagle/getTemp?date=${date}`,  (a) => a.data.data.name], 
-                ['天眼', `https://xiaoce.fun/api/v0/quiz/daily/skyeye/getTemp?date=${date}`,  (a) => a.data.data.name], 
-                ['乡音', `https://xiaoce.fun/api/v0/quiz/daily/accent/get?date=${date}`,  (a) => a.data.data.detail.split('_')[0]], 
-                ['城景', `https://xiaoce.fun/api/v0/quiz/daily/cityScene/get?date=${date}`,  (a) => a.data.data.more], 
-                ['国景', `https://xiaoce.fun/api/v0/quiz/daily/countryScene/get?date=${date}`,  (a) => a.data.data.more], 
-                ['猜Word', `https://xiaoce.fun/api/v0/quiz/daily/wordle/getTemp?date=${date}`,  (a) => a.data.data], 
-                ['诗文', `https://xiaoce.fun/api/v0/quiz/daily/poem/get?date=${date}`,  (a) => a.data.data.title], 
-                ['寻花令', `https://xiaoce.fun/api/v0/quiz/daily/xunhualing/getTemp?date=${date}`,  (a) => a.data.data], 
-                ['歌词', `https://xiaoce.fun/api/v0/quiz/daily/lyric/get?date=${date}`,  (a) => a.data.data.title], 
-                ['猜字', `https://xiaoce.fun/api/v0/quiz/daily/zi/get?date=${date}`,  (a) => a.data.data.zi], 
-                ['连句', `https://xiaoce.fun/api/v0/quiz/daily/linkSentence/get?date=${date}&mode=mix`,  (a) => a.data.data.sentences.join(";")], 
-                ['诗文连句', `https://xiaoce.fun/api/v0/quiz/daily/linkSentence/get?date=${date}&mode=poem`,  (a) => a.data.data.sentences.join(";")], 
-                ['歌词连句', `https://xiaoce.fun/api/v0/quiz/daily/linkSentence/get?date=${date}&mode=lyric`,  (a) => a.data.data.sentences.join(";")], 
-                ['猜校', `https://xiaoce.fun/api/v0/quiz/daily/school/get?date=${date}`,  (a) => a.data.data.schChnName], 
-                ['猜铁北京', `https://xiaoce.fun/api/v0/quiz/daily/metro/get?date=${date}&city=%E5%8C%97%E4%BA%AC`,  (a) => a.data.data.name], 
-                ['猜铁上海', `https://xiaoce.fun/api/v0/quiz/daily/metro/get?date=${date}&city=%E4%B8%8A%E6%B5%B7`,  (a) => a.data.data.name], 
-                ['猜铁广州', `https://xiaoce.fun/api/v0/quiz/daily/metro/get?date=${date}&city=%E5%B9%BF%E5%B7%9E`,  (a) => a.data.data.name], 
-                ['猜铁深圳', `https://xiaoce.fun/api/v0/quiz/daily/metro/get?date=${date}&city=%E6%B7%B1%E5%9C%B3`,  (a) => a.data.data.name], 
-                ['猜原', `https://xiaoce.fun/api/v0/quiz/daily/genshin/get?date=${date}`,  (a) => a.data.data.name], 
-                ['原寻', `https://xiaoce.fun/api/v0/quiz/daily/geoGenshin/get?date=${date}`,  (a) => a.data.data.more], 
-                ['猜农', `https://xiaoce.fun/api/v0/quiz/daily/honor/get?date=${date}`,  (a) => a.data.data.name], 
-                ['猜舟', `https://xiaoce.fun/api/v0/quiz/daily/zhou/get?date=${date}`,  (a) => a.data.data.name], 
-                ['猜英', `https://xiaoce.fun/api/v0/quiz/daily/lol/get?date=${date}`,  (a) => a.data.data.name], 
-                ['猜足', `https://xiaoce.fun/api/v0/quiz/daily/football/get?date=${date}`,  (a) => a.data.data.nameCn], 
-                ['猜色', `https://xiaoce.fun/api/v0/quiz/daily/guessColor/get?date=${date}`,  (a) => a.data.data.color], 
-                ['猜车', `https://xiaoce.fun/api/v0/quiz/daily/car/get?date=${date}`,  (a) => a.data.data.name], 
-                ['猜五', `https://xiaoce.fun/api/v0/quiz/daily/five/get?date=${date}`,  (a) => a.data.data.name], 
-                ['猜穹', `https://xiaoce.fun/api/v0/quiz/daily/starRail/get?date=${date}`,  (a) => a.data.data.name], 
-                ['猜游', `https://xiaoce.fun/api/v0/quiz/daily/steam/get?date=${date}`,  (a) => a.data.data.cnName], 
-                ['Minecraft猜物', `https://xiaoce.fun/api/v0/quiz/daily/mc/get?date=${date}`,  (a) => a.data.item.displayNameZh], 
-                ['百科', `https://xiaoce.fun/api/v0/quiz/daily/steam/get?date=${date}`,  (a) => a.data.data.title], 
-
-
-		    ['猜宝可梦', `https://xiaoce.fun/api/v0/quiz/daily/pokemon/get?date=${date}`,  (a) => a.data.data.name], 
-		    ['机场', `https://xiaoce.fun/api/v0/quiz/daily/airport/get?date=${date}`,  (a) => a.data.data.name], 
-                ['填Word', `https://xiaoce.fun/api/v0/quiz/daily/fillword/get?date=${date}`,  (a) => a.data], 
-                
-		['猜词', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_word&date=${date}&status=giveUp`,  (a) => a.data.data.wordAnswer],
-		['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
-		['联星', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_star&date=${date}&status=giveUp`,  (a) => a.data.data.starName],
-		['猜星', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_star&date=${date}&status=giveUp`,  (a) => a.data.data.starName],
-		['猜病', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_disease&date=${date}&status=giveUp`,  (a) => a.data.data.disease],
-		['猜萌', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_cute&date=${date}&status=giveUp`,  (a) => a.data.data.cute],
-		['猜罪', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_crime&date=${date}&status=giveUp`,  (a) => a.data.data.crime_name],
-
-		['猜职', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_job&date=${date}&status=giveUp`,  (a) => a.data.data.job],
-		['填足2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillFootball/get?date=${date}&subType=22`,  (a) => tableData(a)],
-		    ['填省2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillProvince/get?date=${date}&subType=22`,  (a) => tableData(a)],
-		    ['填省3x3', `https://xiaoce.fun/api/v0/quiz/daily/fillProvince/get?date=${date}&subType=33`,  (a) => tableData(a)],
-		    ['填国3x3', `https://xiaoce.fun/api/v0/quiz/daily/fillCountry/get?date=${date}&subType=33`,  (a) => tableData(a)],
-		    ['填歌2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillSong/get?date=${date}&subType=22`,  (a) => tableData(a,"title")],
-		    ['填番3x3', `https://xiaoce.fun/api/v0/quiz/daily/fillAnime/get?date=${date}&subType=33`,  (a) => tableData(a)],
-		    ['填影2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillMovie/get?date=${date}&subType=22`,  (a) => tableData(a,"title")],
-		    ['填足', `https://xiaoce.fun/api/v0/quiz/daily/fillFootball/get?date=${date}&subType=22`,  (a) => tableData(a)],
-		    ['填歌3x3', `https://xiaoce.fun/api/v0/quiz/daily/fillSong/get?date=${date}&subType=33`,  (a) => tableData(a,"title")],
-		    ['填篮2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillNBA/get?date=${date}&subType=22`,  (a) => tableData(a)],
-      ['填字2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillZi/get?date=${date}&subType=22`,  (a) => tableData(a,"zi")],
-
-      ['排历', `https://xiaoce.fun/api/v0/quiz/daily/history/get?date=${date}`,  (a) =>{let r="";for(let i of a.data.data.events){r+=`${i.year}${i.title};`} return r;}],
-      ['错字', `https://xiaoce.fun/api/v0/quiz/daily/wrong/get?date=${date}`,  (a) =>{let r="";for(let i of a.data.data.wrongWords){r+=`${i.wrongWord}->${i.correctWord};`} return r;}],
-
-
-		//['填省2x2', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
-		//['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
-		//['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
-		//['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
-		//['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
-
-	
-	];
 	const date0=await fetch(urls[0][1]);
 	const date1=await date0.json();
 	const datestr=urls[0][2](date1);
 	if(!datestr){throw{};}
 	if((+datestr)<(+date)){
-        resultElement.textContent = `选定的日期没有答案\n\n`;
+        resultElement.innerHTML = `选定的日期没有答案\n\n`;
         // 恢复按钮状态
         button.classList.remove('loading');
         button.innerHTML = '<i class="fas fa-search"></i> 获取答案';
@@ -528,6 +453,8 @@
     }
 		console.log(datestr);console.log(date);
             let resultText = '';
+		
+            const urls = urlgen(date);
             // 遍历 urls 数组
             for (let i = 0; i < urls.length;  i++) {
                 try {
@@ -539,15 +466,15 @@
                     const ans = urls[i][2](obj);
 					if(!ans){throw {};}
                     // 拼接结果字符串
-                    resultText += `${urls[i][0]}为：${ans}\n`;
+                    resultText += `<b color="violet">${urls[i][0]}</b>：${ans}<br>\n`;
                 } catch (error) {
                     // 若请求或处理过程中出现错误，记录错误信息
                     console.log( `${urls[i][0]}请求出错：${error.message}\n`); 
-					resultText+=`${urls[i][0]}:{暂无}\n`;
+			resultText+=`<span color="red>"${urls[i][0]}:{暂无}</span><br>\n`;
                 }
             }
             // 将结果显示在页面上
-            resultElement.textContent = `猜盐/炒饭小测验全部答案(日期${date})：[答案不唯一的，提供一个示例]\n` + resultText+`by constexpr jfblocks@163.com `;
+            resultElement.textContent = `猜盐答案(日期${date})：<b>[答案不唯一的，提供一个示例]</b><br>\n` + resultText+`<br><br><b>Open source at <a href="https://github.com/jfblocks/ichaofan/">GitHub</a>, by constexpr <a href="mailto:jfblockset91@2925.com"> jfblockset91@2925.com </a></b><br><br>`;
             
             // 恢复按钮状态
             button.classList.remove('loading');
@@ -773,7 +700,81 @@ const serverData = {
 };
 */
 //processServerData(serverData);
+    const urlgen=(date)=>[
+                ['今天的日期', `https://xiaoce.fun/api/v0/quiz/daily/getDateV1`,  (a) => a.data], 
+                ['猜城', `https://xiaoce.fun/api/v0/quiz/daily/chinale/getTemp?date=${date}`,  (a) => a.data.data.name], 
+                ['猜城3D', `https://xiaoce.fun/api/v0/quiz/daily/chinale3D/get?date=${date}`,  (a) => a.data.data.more], 
+                ['猜国', `https://xiaoce.fun/api/v0/quiz/daily/worldle/getTemp?date=${date}`,  (a) => a.data.data.name], 
+                ['猜旗', `https://xiaoce.fun/api/v0/quiz/daily/flagle/getTemp?date=${date}`,  (a) => a.data.data.name], 
+                ['天眼', `https://xiaoce.fun/api/v0/quiz/daily/skyeye/getTemp?date=${date}`,  (a) => a.data.data.name], 
+                ['乡音', `https://xiaoce.fun/api/v0/quiz/daily/accent/get?date=${date}`,  (a) => a.data.data.detail.split('_')[0]], 
+                ['城景', `https://xiaoce.fun/api/v0/quiz/daily/cityScene/get?date=${date}`,  (a) => a.data.data.more], 
+                ['国景', `https://xiaoce.fun/api/v0/quiz/daily/countryScene/get?date=${date}`,  (a) => a.data.data.more], 
+                ['猜Word', `https://xiaoce.fun/api/v0/quiz/daily/wordle/getTemp?date=${date}`,  (a) => a.data.data], 
+                ['诗文', `https://xiaoce.fun/api/v0/quiz/daily/poem/get?date=${date}`,  (a) => a.data.data.title], 
+                ['寻花令', `https://xiaoce.fun/api/v0/quiz/daily/xunhualing/getTemp?date=${date}`,  (a) => a.data.data], 
+                ['歌词', `https://xiaoce.fun/api/v0/quiz/daily/lyric/get?date=${date}`,  (a) => a.data.data.title], 
+                ['猜字', `https://xiaoce.fun/api/v0/quiz/daily/zi/get?date=${date}`,  (a) => a.data.data.zi], 
+                ['连句', `https://xiaoce.fun/api/v0/quiz/daily/linkSentence/get?date=${date}&mode=mix`,  (a) => a.data.data.sentences.join(";")], 
+                ['诗文连句', `https://xiaoce.fun/api/v0/quiz/daily/linkSentence/get?date=${date}&mode=poem`,  (a) => a.data.data.sentences.join(";")], 
+                ['歌词连句', `https://xiaoce.fun/api/v0/quiz/daily/linkSentence/get?date=${date}&mode=lyric`,  (a) => a.data.data.sentences.join(";")], 
+                ['猜校', `https://xiaoce.fun/api/v0/quiz/daily/school/get?date=${date}`,  (a) => a.data.data.schChnName], 
+                ['猜铁北京', `https://xiaoce.fun/api/v0/quiz/daily/metro/get?date=${date}&city=%E5%8C%97%E4%BA%AC`,  (a) => a.data.data.name], 
+                ['猜铁上海', `https://xiaoce.fun/api/v0/quiz/daily/metro/get?date=${date}&city=%E4%B8%8A%E6%B5%B7`,  (a) => a.data.data.name], 
+                ['猜铁广州', `https://xiaoce.fun/api/v0/quiz/daily/metro/get?date=${date}&city=%E5%B9%BF%E5%B7%9E`,  (a) => a.data.data.name], 
+                ['猜铁深圳', `https://xiaoce.fun/api/v0/quiz/daily/metro/get?date=${date}&city=%E6%B7%B1%E5%9C%B3`,  (a) => a.data.data.name], 
+                ['猜原', `https://xiaoce.fun/api/v0/quiz/daily/genshin/get?date=${date}`,  (a) => a.data.data.name], 
+                ['原寻', `https://xiaoce.fun/api/v0/quiz/daily/geoGenshin/get?date=${date}`,  (a) => a.data.data.more], 
+                ['猜农', `https://xiaoce.fun/api/v0/quiz/daily/honor/get?date=${date}`,  (a) => a.data.data.name], 
+                ['猜舟', `https://xiaoce.fun/api/v0/quiz/daily/zhou/get?date=${date}`,  (a) => a.data.data.name], 
+                ['猜英', `https://xiaoce.fun/api/v0/quiz/daily/lol/get?date=${date}`,  (a) => a.data.data.name], 
+                ['猜足', `https://xiaoce.fun/api/v0/quiz/daily/football/get?date=${date}`,  (a) => a.data.data.nameCn], 
+                ['猜色', `https://xiaoce.fun/api/v0/quiz/daily/guessColor/get?date=${date}`,  (a) => a.data.data.color], 
+                ['猜车', `https://xiaoce.fun/api/v0/quiz/daily/car/get?date=${date}`,  (a) => a.data.data.name], 
+                ['猜五', `https://xiaoce.fun/api/v0/quiz/daily/five/get?date=${date}`,  (a) => a.data.data.name], 
+                ['猜穹', `https://xiaoce.fun/api/v0/quiz/daily/starRail/get?date=${date}`,  (a) => a.data.data.name], 
+                ['猜游', `https://xiaoce.fun/api/v0/quiz/daily/steam/get?date=${date}`,  (a) => a.data.data.cnName], 
+                ['Minecraft猜物', `https://xiaoce.fun/api/v0/quiz/daily/mc/get?date=${date}`,  (a) => a.data.item.displayNameZh], 
+                ['百科', `https://xiaoce.fun/api/v0/quiz/daily/steam/get?date=${date}`,  (a) => a.data.data.title], 
 
+
+		    ['猜宝可梦', `https://xiaoce.fun/api/v0/quiz/daily/pokemon/get?date=${date}`,  (a) => a.data.data.name], 
+		    ['机场', `https://xiaoce.fun/api/v0/quiz/daily/airport/get?date=${date}`,  (a) => a.data.data.name], 
+                ['填Word', `https://xiaoce.fun/api/v0/quiz/daily/fillword/get?date=${date}`,  (a) => a.data], 
+                
+		['猜词', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_word&date=${date}&status=giveUp`,  (a) => a.data.data.wordAnswer],
+		['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
+		['联星', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_star&date=${date}&status=giveUp`,  (a) => a.data.data.starName],
+		['猜星', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_star&date=${date}&status=giveUp`,  (a) => a.data.data.starName],
+		['猜病', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_disease&date=${date}&status=giveUp`,  (a) => a.data.data.disease],
+		['猜萌', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_cute&date=${date}&status=giveUp`,  (a) => a.data.data.cute],
+		['猜罪', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_crime&date=${date}&status=giveUp`,  (a) => a.data.data.crime_name],
+
+		['猜职', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=guess_job&date=${date}&status=giveUp`,  (a) => a.data.data.job],
+		['填足2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillFootball/get?date=${date}&subType=22`,  (a) => tableData(a)],
+		    ['填省2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillProvince/get?date=${date}&subType=22`,  (a) => tableData(a)],
+		    ['填省3x3', `https://xiaoce.fun/api/v0/quiz/daily/fillProvince/get?date=${date}&subType=33`,  (a) => tableData(a)],
+		    ['填国3x3', `https://xiaoce.fun/api/v0/quiz/daily/fillCountry/get?date=${date}&subType=33`,  (a) => tableData(a)],
+		    ['填歌2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillSong/get?date=${date}&subType=22`,  (a) => tableData(a,"title")],
+		    ['填番3x3', `https://xiaoce.fun/api/v0/quiz/daily/fillAnime/get?date=${date}&subType=33`,  (a) => tableData(a)],
+		    ['填影2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillMovie/get?date=${date}&subType=22`,  (a) => tableData(a,"title")],
+		    ['填足', `https://xiaoce.fun/api/v0/quiz/daily/fillFootball/get?date=${date}&subType=22`,  (a) => tableData(a)],
+		    ['填歌3x3', `https://xiaoce.fun/api/v0/quiz/daily/fillSong/get?date=${date}&subType=33`,  (a) => tableData(a,"title")],
+		    ['填篮2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillNBA/get?date=${date}&subType=22`,  (a) => tableData(a)],
+      ['填字2x2', `https://xiaoce.fun/api/v0/quiz/daily/fillZi/get?date=${date}&subType=22`,  (a) => tableData(a,"zi")],
+
+      ['排历', `https://xiaoce.fun/api/v0/quiz/daily/history/get?date=${date}`,  (a) =>{let r="";for(let i of a.data.data.events){r+=`${i.year}${i.title};`} return r;}],
+      ['错字', `https://xiaoce.fun/api/v0/quiz/daily/wrong/get?date=${date}`,  (a) =>{let r="";for(let i of a.data.data.wrongWords){r+=`${i.wrongWord}->${i.correctWord};`} return r;}],
+
+
+		//['填省2x2', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
+		//['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
+		//['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
+		//['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
+		//['联城', `https://xiaoce.fun/api/v0/quiz/daily/addRecord?type=link_city&date=${date}&status=giveUp`,  (a) => a.data.data.name],
+
+	
+	];
 
 
 	    
