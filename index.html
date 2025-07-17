@@ -604,13 +604,14 @@
 
 
 	    // 构建HTML表格
+// 构建HTML表格
 function buildHtmlTable(rowHeaders, colHeaders, result) {
     let tableHtml = '<table class="min-w-full divide-y divide-gray-200">';
     
     // 表头行
     tableHtml += '<thead class="bg-gray-50">';
     tableHtml += '<tr>';
-    tableHtml += `<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">${rowHeaders[0].text}</th>`;
+    tableHtml += `<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>`; // 左上角空单元格
     
     colHeaders.forEach(header => {
         tableHtml += `<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">${header.text}</th>`;
@@ -622,7 +623,7 @@ function buildHtmlTable(rowHeaders, colHeaders, result) {
     // 表格主体
     tableHtml += '<tbody class="bg-white divide-y divide-gray-200">';
     
-    rowHeaders.slice(1).forEach((rowHeader, rowIndex) => {
+    rowHeaders.forEach((rowHeader, rowIndex) => {
         tableHtml += '<tr>';
         tableHtml += `<th scope="row" class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${rowHeader.text}</th>`;
         
@@ -635,7 +636,7 @@ function buildHtmlTable(rowHeaders, colHeaders, result) {
     });
     
     tableHtml += '</tbody>';
-    tableHtml += '</table><br><br>';
+    tableHtml += '</table>';
     
     return tableHtml;
 }
