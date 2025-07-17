@@ -405,6 +405,7 @@
         <div class="header">
             <h1 class="title">🎯 猜盐日挑答案</h1>
             <p class="subtitle">一站式获取各种小游戏答案 · by constexpr</p>
+		<p><b>Open source at <a href="https://github.com/jfblocks/ichaofan/">GitHub</a>, by constexpr <a href="mailto:jfblockset91@2925.com"> jfblockset91@2925.com </a></b></p>
         </div>
 
         <div class="input-group">
@@ -579,23 +580,7 @@
 		        return;
 		    }
 		
-		    // // 构建表格
-		    // let table = " ".repeat(rowHeaders[0].text.length + 3,"\u3000");
-		    // colHeaders.forEach(header => {
-		    //     table += (header.text+"|").padEnd(header.text.length + 2);
-		    // });
-		    // table += "\n";
-		
-		    // rowHeaders.forEach((rowHeader, rowIndex) => {
-		    //     table += (rowHeader.text+"|").padEnd(rowHeaders[0].text.length + 2,"\u3000");
-		    //     for (let colIndex = 0; colIndex < a; colIndex++) {
-		    //         const answer = result[rowIndex][colIndex];
-		    //         table += (answer+"|").padEnd(colHeaders[colIndex].text.length + 2,"\u3000");
-		    //     }
-		    //     table += "\n";
-		    // });
-		
-		    // return ("\n"+table+"\n\n");
+		    
 			return buildHtmlTable(rowHeaders, colHeaders, result);
 		}
 
