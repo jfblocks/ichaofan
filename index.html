@@ -483,10 +483,10 @@
 			try{
 				const response1 = await fetch(`https://xiaoce.fun/api/v0/quiz/daily/travle/getList`);
                     // 将响应数据解析为 JSON 对象
-                chinaPath = (await response.json()).data; 
+                chinaPath = (await response1.json()).data; 
 				const response2 = await fetch(`https://xiaoce.fun/api/v0/quiz/daily/travleWorld/getList`);
                     // 将响应数据解析为 JSON 对象
-                worldPath = (await response.json()).data; 
+                worldPath = (await response2.json()).data; 
 				} catch (error) {
                     // 若请求或处理过程中出现错误，记录错误信息
                     console.log( `请求出错：${error.message}\n`); 
