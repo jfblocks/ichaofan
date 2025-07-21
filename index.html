@@ -487,6 +487,9 @@
 				const response2 = await fetch(`https://xiaoce.fun/api/v0/quiz/daily/travleWorld/getList`);
                     // 将响应数据解析为 JSON 对象
                 worldPath = (await response2.json()).data; 
+				const response3 = await fetch(`https://xiaoce.fun/api/v0/quiz/daily/geoGenshin/getList`);
+                    // 将响应数据解析为 JSON 对象
+                geoGenshin = (await response3.json()).data; 
 				} catch (error) {
                     // 若请求或处理过程中出现错误，记录错误信息
                     console.log( `请求出错：${error.message}\n`); 
@@ -880,7 +883,7 @@ function findOptimalPath(start, end, paths) {
                 ['猜铁广州', `https://xiaoce.fun/api/v0/quiz/daily/metro/get?date=${date}&city=%E5%B9%BF%E5%B7%9E`,  (a) => a.data.data.name], 
                 ['猜铁深圳', `https://xiaoce.fun/api/v0/quiz/daily/metro/get?date=${date}&city=%E6%B7%B1%E5%9C%B3`,  (a) => a.data.data.name], 
                 ['猜原', `https://xiaoce.fun/api/v0/quiz/daily/genshin/get?date=${date}`,  (a) => a.data.data.name], 
-                ['原寻', `https://xiaoce.fun/api/v0/quiz/daily/geoGenshin/get?date=${date}`,  (a) => a.data.data.more], 
+                ['原寻', `https://xiaoce.fun/api/v0/quiz/daily/geoGenshin/get?date=${date}`,  (a) => geoGenshin.filter(v=>v.id===a.data.data.id)[0].name], 
                 ['猜农', `https://xiaoce.fun/api/v0/quiz/daily/honor/get?date=${date}`,  (a) => a.data.data.name], 
                 ['猜舟', `https://xiaoce.fun/api/v0/quiz/daily/zhou/get?date=${date}`,  (a) => a.data.data.name], 
                 ['猜英', `https://xiaoce.fun/api/v0/quiz/daily/lol/get?date=${date}`,  (a) => a.data.data.name], 
